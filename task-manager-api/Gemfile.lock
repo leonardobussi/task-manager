@@ -74,6 +74,9 @@ GEM
     erubi (1.10.0)
     factory_girl (4.9.0)
       activesupport (>= 3.0.0)
+    factory_girl_rails (4.9.0)
+      factory_girl (~> 4.9.0)
+      railties (>= 3.0.0)
     faker (2.15.1)
       i18n (>= 1.6, < 2)
     ffi (1.14.2)
@@ -160,6 +163,8 @@ GEM
     shoulda-matchers (4.4.1)
       activesupport (>= 4.2.0)
     spring (2.1.1)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
@@ -189,7 +194,7 @@ DEPENDENCIES
   byebug
   database_cleaner (~> 1.8, >= 1.8.5)
   devise
-  factory_girl (~> 4.9)
+  factory_girl_rails
   faker (~> 2.15, >= 2.15.1)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
@@ -198,6 +203,7 @@ DEPENDENCIES
   rspec-rails (~> 4.0, >= 4.0.2)
   shoulda-matchers (~> 4.4, >= 4.4.1)
   spring
+  spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
 
