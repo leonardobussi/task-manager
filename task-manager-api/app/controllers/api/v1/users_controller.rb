@@ -10,5 +10,4 @@ class Api::V1::UsersController < ApplicationController
       head 404
     end
   end
-
 end
