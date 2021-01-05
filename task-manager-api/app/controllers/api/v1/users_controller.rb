@@ -16,6 +16,8 @@ class Api::V1::UsersController < ApplicationController
 
     if user.save
       render :json => user, status: 201
+    else
+      render json: { errors: user.errors }
     end
   end
 
