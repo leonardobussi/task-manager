@@ -10,6 +10,7 @@
 
 * archive hosts (operational system)
   * linux => `etc/hosts`
+    * exemple => `127.0.0.1      api.task-manager.test`
 
 
 `error, not exist route /users at the using the subdomain api.name-application.test`
