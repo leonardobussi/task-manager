@@ -52,7 +52,17 @@ RSpec.describe "Api::V1::Users", type: :request do
 
     end
     context "when the request params are is not valid" do 
-      # no proximo video
+      let(:user_params) { attributes_for(:user, email: 'invalid_email@') }
+
+      it 'return status code 422' do 
+        expect(response).to have_http_status(200)
+      end
+
+      it 'retorn json data for the errors' do 
+        user_response = JSON.parse(response.body)
+        expect(user_response).to have_key('errors')
+      end
+
     end
 
   end
