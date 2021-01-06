@@ -17,4 +17,22 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "#generate_authentication_token!" do 
+    it "gerar token unico a cada usuario" do 
+      allow(Devise).to receive(:friendly_token).and_return("wNDqryugpFxsmNZShBiF")
+      user.generate_authentication_token!
+      expect(user.auth_token).to eq("wNDqryugpFxsmNZShBiF")
+    end
+
+    it "gerar outra chave se a chave já estiver sendo usada" do 
+      
+      allow(Devise).to receive(:friendly_token).and_return('abc123A1b2', 'abc123A1b2', 'abc123BA12')
+      existing_user = create(:user)
+      user.generate_authentication_token!
+
+      expect(user.auth_token).not_to eq(existing_user.auth_token)
+
+    end
+  end
+
 end
