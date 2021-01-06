@@ -4,19 +4,26 @@ require 'rails_helper'
 RSpec.describe "Api::V1::Users", type: :request do
   let!(:user) {create(:user)}
   let(:user_id) { user.id }
+  let(:headers) do 
+    {
+      "Accept" => "application/vnd.taskmanager.v1",
+      "Content-Type" => Mime[:json].to_s
+    }
+  end
 
   before { host! "localhost:3000/api/v1" }
 
+
+  # esse é o get ----------------------------------------------------------------------------------------
   describe "get /users/:id" do 
     before do 
-      headers = { "Accept" => "application/vnd.taskmanager.v1" }
       get "/users/#{user_id}", params: {}, headers: headers
     end
 
     context "when the user exists" do 
       it "returns the user" do 
-        user_response = JSON.parse(response.body,  symbolize_names: true)
-        expect(user_response[:id]).to eql(user_id)
+        # user_response = JSON.parse(response.body,  symbolize_names: true)
+        expect(json_body[:id]) == user_id
       end
       
       it "returns status code 200" do 
@@ -33,10 +40,11 @@ RSpec.describe "Api::V1::Users", type: :request do
 
   end
 
+
+  # esee é post -----------------------------------------------------------------------------------
   describe "post for /users"  do 
     before do 
-      headers = { 'accept'  => 'application/vnd.taskmanager.v1'}
-      post "/users", params: { user: user_params }, headers: headers
+      post "/users", params: { user: user_params }.to_json, headers: headers
     end
 
     context "when the request params are valid" do 
@@ -46,8 +54,8 @@ RSpec.describe "Api::V1::Users", type: :request do
         expect(response).to have_http_status(201)
       end
       it 'retorn json data the of user created' do 
-        user_response = JSON.parse(response.body,  symbolize_names: true)
-        expect(user_response[:email]).to eq(user_params[:email])
+        # user_response = JSON.parse(response.body,  symbolize_names: true)
+        expect(json_body[:email]) == user_params[:email]
       end
 
     end
@@ -59,59 +67,61 @@ RSpec.describe "Api::V1::Users", type: :request do
     #   end
 
     #   it 'retorn json data for the errors' do 
-    #     user_response = JSON.parse(response.body,  symbolize_names: true)
-    #     expect(user_response).to have_key(:errors)
+    #     #user_response = JSON.parse(response.body,  symbolize_names: true)
+    #     expect(json_body).to have_key(:errors)
     #   end
 
     # end
 
   end
 
+
+
+  # # esse é put ---------------------------------------------------------------------------------------------------
   describe "PUT for /users/:id" do 
 
     before do 
-      headers = { "Accept" => "application/vnd.taskmanager.v1" }
-      put "/users/#{user_id}", params: {}, headers: headers
+      put "/users/#{user_id}", params: {user: user_params}.to_json, headers: headers
     end
 
 
     context "when the request params are valid" do 
 
-      # let(:user_params) { {email: 'leonardo@bussi5.com'} }
-      let(:user_params) { 'leonardo@bussi5.com' }
+      let(:user_params) { {email: 'leonardo@bussi5.com'} }
+      #let(:user_params) { 'leonardo@bussi5.com' }
      
       it "returns status code 200" do 
         expect(response).to have_http_status(200)
       end
 
       it "returns requests of data in json that if success it the update" do 
-        user_response = JSON.parse(response.body,  symbolize_names: true)
-        expect(user_response[:email]) == user_params
+        #user_response = JSON.parse(response.body,  symbolize_names: true)
+        expect(json_body[:email]) == user_params
       end
 
     end
 
-    context "when the request params are is not valid" do 
+    # context "when the request params are is not valid" do 
 
-      # let(:user_params) { {email: 'leonardo@bussi5.com'} }
-      # let(:user_params) { 'ussb' }
+    #   # let(:user_params) { {email: 'leonardo@bussi5.com'} }
+    #   # let(:user_params) { 'ussb' }
      
-      # it "returns status code 422" do 
-      #   expect(response).to have_http_status(422)
-      # end
+    #   # it "returns status code 422" do 
+    #   #   expect(response).to have_http_status(422)
+    #   # end
 
-      # it 'retorn json data for the errors' do 
-      #   user_response = JSON.parse(response.body,  symbolize_names: true)
-      #   expect(user_response).to have_key(:errors)
-      # end
+    #   # it 'retorn json data for the errors' do 
+    #   #   #user_response = JSON.parse(response.body,  symbolize_names: true)
+    #   #   expect(json_body).to have_key(:errors)
+    #   # end
 
-    end
+    # end
 
   end
 
+  # # esse é o delete ---------------------------------------------------------------------------------------
   describe "DELETE for /user/:id" do  
     before do 
-      headers = { "Accept" => "application/vnd.taskmanager.v1" }
       delete "/users/#{user_id}", params: {}, headers: headers
     end
 
@@ -125,7 +135,7 @@ RSpec.describe "Api::V1::Users", type: :request do
         expect(User.find_by(id: user_id)).to be_nil
       end
 
-    end
+  end
 
 
 end
