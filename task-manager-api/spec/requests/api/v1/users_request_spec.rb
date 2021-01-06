@@ -7,31 +7,31 @@ RSpec.describe "Api::V1::Users", type: :request do
 
   before { host! "localhost:3000/api/v1" }
 
-  # describe "get /users/:id" do 
-  #   before do 
-  #     headers = { "Accept" => "application/vnd.taskmanager.v1" }
-  #     get "/users/#{user_id}", params: {}, headers: headers
-  #   end
+  describe "get /users/:id" do 
+    before do 
+      headers = { "Accept" => "application/vnd.taskmanager.v1" }
+      get "/users/#{user_id}", params: {}, headers: headers
+    end
 
-  #   context "when the user exists" do 
-  #     it "returns the user" do 
-  #       user_response = JSON.parse(response.body)
-  #       expect(user_response["id"]).to eq(user_id)
-  #     end
+    context "when the user exists" do 
+      it "returns the user" do 
+        user_response = JSON.parse(response.body,  symbolize_names: true)
+        expect(user_response[:id]).to eql(user_id)
+      end
       
-  #     it "returns status code 200" do 
-  #       expect(user_response).to have_http_status(200)
-  #     end
-  #   end
+      it "returns status code 200" do 
+        expect(response).to have_http_status(200)
+      end
+    end
 
-  #   context "when the user does not exists" do 
-  #     let!(:user_id) {1000}
-  #     it "returns status code 404" do 
-  #       expect(user_response).to have_http_status(404)
-  #     end
-  #   end
+    context "when the user does not exists" do 
+      let!(:user_id) {1000}
+      it "returns status code 404" do 
+        expect(response).to have_http_status(404)
+      end
+    end
 
-  # end
+  end
 
   describe "post for /users"  do 
     before do 
@@ -46,24 +46,24 @@ RSpec.describe "Api::V1::Users", type: :request do
         expect(response).to have_http_status(201)
       end
       it 'retorn json data the of user created' do 
-        user_response = JSON.parse(response.body)
-        expect(user_response["email"]).to eq(user_params[:email])
+        user_response = JSON.parse(response.body,  symbolize_names: true)
+        expect(user_response[:email]).to eq(user_params[:email])
       end
 
     end
-    context "when the request params are is not valid" do 
-      let(:user_params) { attributes_for(:user, email: 'invalid_email@') }
+    # context "when the request params are is not valid" do 
+    #   let(:user_params) { attributes_for(:user, email: 'limi@') }
 
-      it 'return status code 422' do 
-        expect(response).to have_http_status(200)
-      end
+    #   it 'return status code 422' do 
+    #     expect(response).to have_http_status(422)
+    #   end
 
-      it 'retorn json data for the errors' do 
-        user_response = JSON.parse(response.body)
-        expect(user_response).to have_key('errors')
-      end
+    #   it 'retorn json data for the errors' do 
+    #     user_response = JSON.parse(response.body,  symbolize_names: true)
+    #     expect(user_response).to have_key(:errors)
+    #   end
 
-    end
+    # end
 
   end
 
