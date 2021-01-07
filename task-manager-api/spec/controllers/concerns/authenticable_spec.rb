@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe Authenticable do 
+RSpec.describe Authenticable do 
   controller(ApplicationController) do 
     include Authenticable
   end
@@ -11,7 +11,8 @@ Rspec.describe Authenticable do
     let(:user) {create(:user)}
 
     before do
-      
+      req = double(:headers => { 'Authorization' => user.auth_token})
+      allow(app_controller).to receive(:request).and_return(req)
     end
 
     it 'retorna o usuario pelo token enviado no header' do
@@ -20,8 +21,4 @@ Rspec.describe Authenticable do
 
   end
 
-end
-
-def current_user
-  User.find_by(auth_token: request.headers['Authorization'])
 end
