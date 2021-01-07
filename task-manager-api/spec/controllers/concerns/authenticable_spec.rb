@@ -21,4 +21,34 @@ RSpec.describe Authenticable do
 
   end
 
+  describe '#authenticate_with_token!' do
+    controller do 
+      before_action :authenticate_with_token!
+
+      def restricted_action; end
+
+    end
+
+
+    before do 
+      allow(app_controller).to receive(:current_user).and_return(nil) 
+      routes.draw { get 'restricted_action' => 'anonymous#restricted_action'}
+      get :restricted_action
+    end
+
+    context 'quando não estiver nenhum usuario logado no sistema' do 
+
+
+      it 'retorna o status code 401' do
+        expect(response).to have_http_status(401)
+      end
+
+      it 'retorna o dados em json para os erros' do 
+        expect(json_body).to have_key('errors')
+      end
+
+    end
+
+  end
+
 end
