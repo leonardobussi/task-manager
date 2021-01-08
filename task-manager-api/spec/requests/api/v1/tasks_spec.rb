@@ -137,5 +137,31 @@ RSpec.describe "Task Api", type: :request do
 
   end
 
+  describe 'DELETE /tasks/:id' do
+    let!(:task) { create(:task, user_id: user.id)}
+
+    before do 
+      delete "/tasks/#{task.id}", params: {}, headers: headers
+    end
+
+      it 'retorna status code 204' do
+        expect(response).to have_http_status(204)
+      end
+
+
+      it 'retorna o json com os dados da tarefa atualizado' do
+        expect( Task.find_by(id: task.id) ).to be_nil
+      end
+
+      # it 'retorna status code 422' do
+      #   expect(response).to have_http_status(422)
+      # end
+
+
+      # it 'retorna o json com os dados da tarefa atualizado' do
+      #   expect(json_body['errors.title']).to eq(nil)
+      # end
+
+  end
 
 end

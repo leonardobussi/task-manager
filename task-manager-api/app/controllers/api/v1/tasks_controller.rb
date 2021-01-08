@@ -5,10 +5,14 @@ class Api::V1::TasksController < ApplicationController
     tasks = current_user.tasks
     render json: {tasks: tasks}, status: 200
   end
+
+
   def show
     task = current_user.tasks.find(params[:id])
     render json: task, status: 200
   end
+
+
   def create 
     task = current_user.tasks.build(task_params)
 
@@ -30,6 +34,10 @@ class Api::V1::TasksController < ApplicationController
   end
 
   def destroy 
+    task = current_user.tasks.find(params[:id])
+
+    task.destroy
+    head 204
   end
 
 
