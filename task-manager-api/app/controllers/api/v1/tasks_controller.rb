@@ -19,8 +19,21 @@ class Api::V1::TasksController < ApplicationController
     end
   end
 
-  private
+  def update 
+    task = current_user.tasks.find(params[:id])
+    # if task.update_attributes(task_params)
+    if task.update(task_params)
+      render json: task, status: 200
+    else
+      render json: { errors: task.errors}, status: 422
+    end
+  end
 
+  def destroy 
+  end
+
+
+  private
   def task_params 
     params.require(:task).permit(:title, :description, :deadline, :done)
   end
