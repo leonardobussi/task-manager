@@ -42,4 +42,50 @@ RSpec.describe "Task Api", type: :request do
       end
   end
 
+  describe 'POST /tasks' do 
+    before do 
+      post "/tasks", params: { task: task_params}.to_json, headers: headers
+    end
+
+    context 'quando os parametros são validos' do 
+
+      let(:task_params) { attributes_for(:task) }
+      
+      it 'retorna status code 201' do
+        expect(response).to have_http_status(201)
+      end
+
+      it 'se esta salvando as tasks no banco de dados' do
+        expect(Task.find_by(title: task_params[:title])).not_to  be_nil
+      end
+
+      it 'does retorna o json do usuario criado' do
+        expect(json_body['title']).to  eq(task_params[:title])
+      end
+
+      it 'associando as task ao usuario atual' do
+        expect(json_body['user_id']).to  eq(user.id)
+      end
+
+    end
+
+    context 'quano os parametros forem invalidos' do
+      let(:task_params) { attributes_for(:task, title: '') }
+
+      it 'retorna status code 402' do
+        expect(response).to have_http_status(402)
+      end
+
+      it 'verifica se os dados não estão sendo salvo no banco de dados' do
+        expect( Task.find_by(title: task_params[:title])).to be_nil
+      end
+
+      it 'retorna erro para o titulo' do
+        expect(json_body['errors.title']).to eq(nil)
+      end
+
+    end
+
+  end
+
 end
