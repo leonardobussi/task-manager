@@ -1,16 +1,17 @@
 require 'api_version_constraint'
 Rails.application.routes.draw do
   
-  #  devise_for :users
+  devise_for :users, only: [:sessions], controllers: { session: 'api/v1/sessions' }
   
   # namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: "/" do
   #   namespace :v1, path: "/", constraints: ApiVersionConstraint.new(version: 1, default: true) do
-  #     resources :users, only: [:show]
-
+  #     resources :users, only: [:show, :create, :update, :destroy]
+  #     resources :sessions, only: [:create, :destroy]
   namespace 'api' do 
     namespace 'v1' do
       resources :users, only: [:show, :create, :update, :destroy]
-      resources :sessions, only: [:create]
+      resources :sessions, only: [:create, :destroy]
+      resources :tasks, only: [:index, :show, :create, :update, :destroy]
     end
   end
 end
