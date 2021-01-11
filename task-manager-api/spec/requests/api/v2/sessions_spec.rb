@@ -28,8 +28,8 @@ RSpec.describe "Sessions API", type: :request do
       it 'retorn json with are data at the user with auth token' do
         # puts "\n--------------------------\n#{json_body['auth_token']}\n#{user.auth_token}\n---------------------------------------------"
         user.reload
-        # puts "\n--------------------------\n#{json_body['auth_token']}\n#{user.auth_token}\n---------------------------------------------"
-        expect(json_body['auth_token']).to  eq(user.auth_token)
+        #puts "\n--------------------------\n#{json_body['data']['attributes']['auth-token']}\n-------------------"
+        expect(json_body['data']['attributes']['auth-token']).to  eq(user.auth_token)
         
       end
 
