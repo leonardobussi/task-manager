@@ -24,7 +24,8 @@ RSpec.describe "Api::V1::Users", type: :request do
     context "when the user exists" do 
       it "returns the user" do 
         # user_response = JSON.parse(response.body,  symbolize_names: true)
-        expect(json_body[:id]) == user_id
+
+        expect(json_body['data']['id'].to_i).to eq(user_id)
       end
       
       it "returns status code 200" do 
@@ -56,7 +57,7 @@ RSpec.describe "Api::V1::Users", type: :request do
       end
       it 'retorn json data the of user created' do 
         # user_response = JSON.parse(response.body,  symbolize_names: true)
-        expect(json_body[:email]) == user_params[:email]
+        expect(json_body['data']['attributes']['email']).to eq(user_params[:email])
       end
 
     end
@@ -97,7 +98,9 @@ RSpec.describe "Api::V1::Users", type: :request do
 
       it "returns requests of data in json that if success it the update" do 
         #user_response = JSON.parse(response.body,  symbolize_names: true)
-        expect(json_body[:email]) == user_params
+        # puts "----------------------------------------\n#{json_body['data']['attributes']['email']}\n#{user_params[:email]}\n---------------------------------------"
+
+        expect(json_body['data']['attributes']['email']).to eq(user_params[:email])
       end
 
     end

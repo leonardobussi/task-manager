@@ -4,9 +4,8 @@ class Api::V2::UsersController < ApplicationController
 
   def show 
     begin
-      # @user
-      @user = User.find(params[:id])
-      render :json => @user  #@user
+      user = User.find(params[:id])
+      render json: user, status: 200
     rescue
       head 404
     end
@@ -16,7 +15,7 @@ class Api::V2::UsersController < ApplicationController
     user = User.new(user_params)
 
     if user.save
-      render :json => user, status: 201
+      render json: user, status: 201
     else
       render json: { errors: user.errors }, status: 422
     end
