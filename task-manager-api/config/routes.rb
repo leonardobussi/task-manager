@@ -13,5 +13,11 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create, :destroy]
       resources :tasks, only: [:index, :show, :create, :update, :destroy]
     end
+
+    namespace 'v2' do
+      resources :users, only: [:show, :create, :update, :destroy]
+      resources :sessions, only: [:create, :destroy]
+      resources :tasks, only: [:index, :show, :create, :update, :destroy]
+    end
   end
 end
