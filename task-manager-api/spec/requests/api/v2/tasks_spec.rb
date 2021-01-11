@@ -29,21 +29,21 @@ RSpec.describe "Task Api", type: :request do
       end
     end
 
-    context 'when filter params is sent' do 
-      let!(:notbook_task1) { create(:task, title: 'Check if the notebook is broken', user_id: user.id)}
-      let!(:notbook_task2) { create(:task, title: 'Buy a new notebook', user_id: user.id)}
-      # let!(:other_task_1) {create(:task, title: 'Fix the door', user_id: user.id)}
-      # let!(:other_task_2) {create(:task, title: 'Buy a new car', user_id: user.id)}
+    context 'when filter  and sorting params is are sent' do 
+      let!(:notbook_task_1) { create(:task, title: 'Check if the notebook is broken', user_id: user.id)}
+      let!(:notbook_task_2) { create(:task, title: 'Buy a new notebook', user_id: user.id)}
+      let!(:other_task_1) {create(:task, title: 'Fix the door', user_id: user.id)}
+      let!(:other_task_2) {create(:task, title: 'Buy a new car', user_id: user.id)}
 
 
       before do 
-        get '/tasks?q=[title_cont]=note', params: { }, headers: headers
+        get "/tasks?q[title_cont]=note&q[s]=title+ASC", params: { }, headers: headers
       end
 
 
       it 'returns only task matcheing' do
         returned_task_titles = json_body['data'].map {|t| t['attributes']['title']}
-        expect(returned_task_titles).to eq([notbook_task1.title, notbook_task2.title])
+        expect(returned_task_titles).to eq([notbook_task_2.title, notbook_task_1.title])
       end
 
 
