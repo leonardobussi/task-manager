@@ -12,7 +12,7 @@ RSpec.describe "Api::V1::Users", type: :request do
     }
   end
 
-  before { host! "localhost:3000/api/v1" }
+  before { host! "localhost:3000/api/v2" }
 
 
   # esse é o get ----------------------------------------------------------------------------------------

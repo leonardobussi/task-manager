@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Task Api", type: :request do 
-  before { host! "localhost:3000/api/v1" }
+  before { host! "localhost:3000/api/v2" }
 
   let!(:user) { create(:user) }
   let(:headers) do 
@@ -24,7 +24,7 @@ RSpec.describe "Task Api", type: :request do
     end
 
     it 'retornar 5 tasks' do
-      expect(json_body["tasks"].count).to eq(5)
+      expect(json_body["data"].count).to eq(5)
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe "Task Api", type: :request do
       end
 
       it 'retorna as tasks' do
-        expect(json_body["title"]).to eq(task.title)
+        expect(json_body["data"]["attributes"]["title"]).to eq(task.title)
       end
   end
 
@@ -60,11 +60,11 @@ RSpec.describe "Task Api", type: :request do
       end
 
       it 'does retorna o json do usuario criado' do
-        expect(json_body['title']).to  eq(task_params[:title])
+        expect(json_body["data"]["attributes"]["title"]).to  eq(task_params[:title])
       end
 
       it 'associando as task ao usuario atual' do
-        expect(json_body['user_id']).to  eq(user.id)
+        expect(json_body["data"]["attributes"]['user-id']).to  eq(user.id)
       end
 
     end
@@ -105,7 +105,7 @@ RSpec.describe "Task Api", type: :request do
 
 
       it 'retorna o json com os dados da tarefa atualizado' do
-        expect(json_body['title']).to eq(task_params[:title])
+        expect(json_body["data"]["attributes"]["title"]).to eq(task_params[:title])
       end
 
       it 'atualizar os dados no banco de dados' do

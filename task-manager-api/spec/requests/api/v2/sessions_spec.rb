@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 RSpec.describe "Sessions API", type: :request do 
-  before { host! "localhost:3000/api/v1" }
+  before { host! "localhost:3000/api/v2" }
 
   let(:user) {create(:user)}
   let(:headers) do 
