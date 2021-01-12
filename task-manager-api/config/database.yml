@@ -13,11 +13,11 @@ development:
 
 test:
   <<: *default
-    database: task_manager_api_test
+  database: task_manager_api_test
 
 production:
   <<: *default
-    database: task_manager_api_production
+  database: task_manager_api_production
 #   host: ec2-54-144-196-35.compute-1.amazonaws.com
 #   port: 5432
 #   database: ddjl1k87k150ce
