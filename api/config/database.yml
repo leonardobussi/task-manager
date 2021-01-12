@@ -15,8 +15,11 @@ test:
   <<: *default
   database: task_manager_api_test
 
-# production:
-#   <<: *default
-#   database: task_manager_api_production
-#   username: task_manager_api
-#   password: <%= ENV['TASK_MANAGER_API_DATABASE_PASSWORD'] %>
+production:
+  <<: *default
+  database: task_manager_api_production
+#   host: ec2-54-144-196-35.compute-1.amazonaws.com
+#   port: 5432
+#   database: ddjl1k87k150ce
+#   username: wibypppqvtpvcw
+#   password: ceedfc30e3b2936eda312d7b29177b3a8f2e2325ff1f41d552b9acaab300ca53
