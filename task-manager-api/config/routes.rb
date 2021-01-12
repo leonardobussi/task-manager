@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   #     resources :users, only: [:show, :create, :update, :destroy]
   #     resources :sessions, only: [:create, :destroy]
   namespace 'api' do 
-    namespace 'v1' do
-      resources :users, only: [:show, :create, :update, :destroy]
-      resources :sessions, only: [:create, :destroy]
-      resources :tasks, only: [:index, :show, :create, :update, :destroy]
-    end
+    # namespace 'v1' do
+    #   resources :users, only: [:show, :create, :update, :destroy]
+    #   resources :sessions, only: [:create, :destroy]
+    #   resources :tasks, only: [:index, :show, :create, :update, :destroy]
+    # end
 
     namespace 'v2' do
       resources :users, only: [:show, :create, :update, :destroy]
