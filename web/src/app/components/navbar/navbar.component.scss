@@ -1,0 +1,31 @@
+
+a:hover{
+  text-decoration: none;
+  opacity: 0.6;
+}
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: rgb(26, 26, 26);
+  box-shadow: 0 8px 8px -6px black;
+  top: 0;
+  position: fixed;
+  width: 100%;
+}
+ul{
+  list-style: none;
+}
+li{
+  margin-right: 30px;
+  display: inline;
+}
+a{
+  color: #fff;
+  font-size: 15px;
+}
+.logo{
+  color: rgb(231, 231, 231);
+  font-size: 25px;
+}
