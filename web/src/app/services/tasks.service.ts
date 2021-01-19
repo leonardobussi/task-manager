@@ -23,7 +23,9 @@ export class TasksService {
 
 
   create(tasks: tasks): Observable<tasks> {
-    return this.http.post<tasks>(this.url, tasks)
+    return this.http.post<tasks>(this.url, tasks, {
+      headers: this.headers
+    })
   }
 
   listarTodos(): Observable<tasks[]> {
@@ -33,14 +35,20 @@ export class TasksService {
   }
 
   listarEspecifico(id:number): Observable<tasks[]> {
-    return this.http.get<tasks[]>(`${this.url}/${id}`)
+    return this.http.get<tasks[]>(`${this.url}/${id}`, {
+      headers: this.headers
+    })
   }
 
   editar( id:number, tasks: tasks): Observable<tasks> {
-    return this.http.put<tasks>(`${this.url}/${id}`, tasks)
+    return this.http.put<tasks>(`${this.url}/${id}`, tasks, {
+      headers: this.headers
+    })
   }
 
   deletar(id:number): Observable<tasks>{
-    return this.http.delete<tasks>(`${this.url}/${id}`)
+    return this.http.delete<tasks>(`${this.url}/${id}`, {
+      headers: this.headers
+    })
   }
 }
