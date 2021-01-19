@@ -1,8 +1,17 @@
-
-
-<ul style="padding-top: 100px;" *ngFor="let task of tasks" >
-  <li>titulo: {{task.attributes.title}}</li>
-  <li>descricao: {{task.attributes.description}}</li>
-  <li *ngIf="task.attributes.done == true" >Finalizado: sim</li>
-  <li *ngIf="task.attributes.done == false" >Finalizado: não</li>
-</ul>
+<table class="table" >
+  <thead>
+    <th>ID</th>
+    <th>Título</th>
+    <th>Opçôes</th>
+  </thead>
+  <tbody *ngFor="let task of tasks" >
+    <tr>
+      <td>{{task.attributes.title}}</td>
+      <td>{{task.attributes.description}}</td>
+      <td>
+        <a class="btn btn-info mr-3">Editar</a>
+        <button class="btn btn-danger" >Excluír</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
