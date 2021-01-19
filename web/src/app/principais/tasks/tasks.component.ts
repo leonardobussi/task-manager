@@ -7,7 +7,6 @@ import { TasksService } from '../../services/tasks.service';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
-  tasks_arr: Array<any>
   tasks: Array<any>
 
   constructor(private service: TasksService ) { }
@@ -16,11 +15,24 @@ export class TasksComponent implements OnInit {
     this.listarTodos()
   }
 
+  onSelect() {
+    
+  }
+
+  excluir_task(id){
+      this.service.deletar(id).subscribe((data:any) => {
+      }, (error)=>{
+        console.log(error)
+      })
+    }
+
 
   listarTodos(){
     this.service.listarTodos().subscribe((data:any) => {
       this.tasks = data.data
-        console.log(this.tasks)
+      for(let i = 0; i < this.tasks.length; i++){
+        this.tasks[i].attributes.breveDesc = this.tasks[i].attributes.description.slice(0,20) 
+      }
     },
     (error)=>{
       console.log(error)
