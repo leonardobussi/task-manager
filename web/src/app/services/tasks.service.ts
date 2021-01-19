@@ -15,7 +15,7 @@ export class TasksService {
 
   headers = new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'dhxDcE33QWypK8iwB2_x'
+    'Authorization': 'pX7A585odhSSyyZ8awcs'
   })
   
 

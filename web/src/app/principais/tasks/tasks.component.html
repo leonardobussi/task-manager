@@ -1,1 +1,8 @@
-<p>tasks works!</p>
+
+
+<ul style="padding-top: 100px;" *ngFor="let task of tasks" >
+  <li>titulo: {{task.attributes.title}}</li>
+  <li>descricao: {{task.attributes.description}}</li>
+  <li *ngIf="task.attributes.done == true" >Finalizado: sim</li>
+  <li *ngIf="task.attributes.done == false" >Finalizado: não</li>
+</ul>

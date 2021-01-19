@@ -7,7 +7,7 @@ import { TasksService } from '../../services/tasks.service';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
-
+  tasks_arr: Array<any>
   tasks: Array<any>
 
   constructor(private service: TasksService ) { }
@@ -19,8 +19,8 @@ export class TasksComponent implements OnInit {
 
   listarTodos(){
     this.service.listarTodos().subscribe((data:any) => {
-      this.tasks = data
-      console.log(this.tasks)
+      this.tasks = data.data
+        console.log(this.tasks)
     },
     (error)=>{
       console.log(error)
