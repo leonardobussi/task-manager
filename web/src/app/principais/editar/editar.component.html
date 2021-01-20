@@ -1,3 +1,24 @@
-<h1>
-  boa pessoal
-</h1>
+<h2>Editar tasks</h2>
+
+<form>
+  <div class="form-group">
+    <label for="title">Título <i style="color:red;" >*</i> </label>
+    <input type="text" class="form-control" name="title" id="title" placeholder="titulo">
+  </div>
+  <div class="form-group">
+    <label for="description">Example textarea</label>
+    <textarea class="form-control" name="description" id="description" placeholder="descrição" rows="5"></textarea>
+  </div>
+  <!-- <div class="form-group">
+    <label class="form-label" id="checkLabel" for="done">
+      finalizar
+    </label>
+    <input class="input-group check" type="checkbox" id="done">
+  </div> -->
+
+  <label for="dataconclui">Data para concluir</label>
+  <div class="input-group date" data-provide="datepicker">
+    <input type="date" class="form-control" id="dataconclui">
+  </div>
+
+</form>
