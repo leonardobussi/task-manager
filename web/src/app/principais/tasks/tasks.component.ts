@@ -30,9 +30,6 @@ export class TasksComponent implements OnInit {
   listarTodos(){
     this.service.listarTodos().subscribe((data:any) => {
       this.tasks = data.data
-      for(let i = 0; i < this.tasks.length; i++){
-        this.tasks[i].attributes.breveDesc = this.tasks[i].attributes.description.slice(0,20) 
-      }
     },
     (error)=>{
       console.log(error)

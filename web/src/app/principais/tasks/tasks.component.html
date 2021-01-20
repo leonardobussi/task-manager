@@ -9,7 +9,7 @@
     <tr>
       <td>{{task.id}}</td>
       <td>{{task.attributes.title}}</td>
-      <td>{{task.attributes.breveDesc}}...</td>
+      <td>{{task.attributes.shortdescription}}...</td>
       <td>
         <a [routerLink]="['/tasks/editar', task.id]" class="btn btn-info mr-3">Editar</a>
         <a [routerLink]="['/tasks/visualizar', task.id]" class="btn btn-secondary mr-3" >Visualizar</a>
