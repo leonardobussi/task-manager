@@ -5,11 +5,20 @@ import { tasks } from '../models/tasks.model';
 import { HttpHeaders } from '@angular/common/http';
 
 
+// import headersHttpJson from '../utils/HeadersHttpJson'
+
+
+
+
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class TasksService {
 
+  // head = headersHttpJson()
   
   url = "https://bussitask.herokuapp.com/tasks"
 
@@ -40,8 +49,8 @@ export class TasksService {
     })
   }
 
-  editar( id:number, tasks: tasks): Observable<tasks> {
-    return this.http.put<tasks>(`${this.url}/${id}`, tasks, {
+  editar( id:number, tasks): Observable<any> {
+    return this.http.put<any>(`${this.url}/${id}`, tasks, {
       headers: this.headers
     })
   }
