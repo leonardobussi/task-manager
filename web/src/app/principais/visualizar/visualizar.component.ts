@@ -10,7 +10,15 @@ import datebr from '../../utils/Datebr'
 })
 export class VisualizarComponent implements OnInit {
   
-  t: object = {}
+  t = {
+    title: '',
+    description: '',
+    update: '',
+    done: null,
+    islate: null,
+    deadline: ''
+
+  }
   public userId: number = 0;
   
 

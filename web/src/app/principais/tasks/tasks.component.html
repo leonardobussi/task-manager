@@ -11,7 +11,8 @@
       <td>{{task.attributes.title}}</td>
       <td>{{task.attributes.shortdescription}}...</td>
       <td>
-        <a [routerLink]="['/tasks/editar', task.id]" class="btn btn-info mr-3">Editar</a>
+        <a *ngIf="task.attributes.done != true" [routerLink]="['/tasks/editar', task.id]" class="btn btn-info mr-3">Editar</a>
+        <a *ngIf="task.attributes.done == true"  class="btn-fechado mr-3">Fechado</a>
         <a [routerLink]="['/tasks/visualizar', task.id]" class="btn btn-secondary mr-3" >Visualizar</a>
         <button (click)="excluir_task(task.id)" class="btn btn-danger" >Excluír</button>
       </td>
