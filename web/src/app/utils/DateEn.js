@@ -1,4 +1,4 @@
-export default function datebr(arg, op, op2){
+export default function dateen(arg, op, op2){
 
   var dia =  arg.slice(8,10)
   var mes = arg.slice(5,7)
@@ -12,13 +12,13 @@ if(op == true){
     return hora+min+seg 
   }
   else{
-    return dia+'/'+mes+'/'+ano+' - '+hora+min+seg 
+    return ano+'-'+mes+'-'+dia+':'+hora+min+seg 
   }
   
  
 }
 else {
-  return dia+'/'+mes+'/'+ano
+  return ano+'-'+mes+'-'+dia
 }
   
 }
