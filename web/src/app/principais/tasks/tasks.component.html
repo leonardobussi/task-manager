@@ -1,36 +1,37 @@
 <div class="content">
   <div class="container-fluid">
       <div class="row">
-          <div class="col-md-12">
-              <div class="card strpied-tabled-with-hover">
-                  <div class="card-header ">
-                      <h4 class="card-title">Tasks</h4>
-                  </div>
-                  <div class="card-body table-full-width table-responsive">
-                      <table class="table table-hover table-striped">
-                          <thead>
-                            <th>ID</th>
-                            <th>Título</th>
-                            <th>breve descricão</th>
-                            <th>Opçôes</th>
-                          </thead>
-                          <tbody *ngFor="let task of tasks">
-                              <tr>
-                                <td>{{task.id}}</td>
-                                <td>{{task.attributes.title}}</td>
-                                <td>{{task.attributes.shortdescription}}...</td>
-                                <td>
-                                  <a *ngIf="task.attributes.done != true" [routerLink]="['/tasks/editar', task.id]" class="btn btn-info mr-3">Editar</a>
-                                  <a *ngIf="task.attributes.done == true"  class="btn-fechado mr-3">Fechado</a>
-                                  <a [routerLink]="['/tasks/visualizar', task.id]" class="btn btn-secondary mr-3" >Visualizar</a>
-                                  <button (click)="excluir_task(task.id)" class="btn btn-danger" >Excluír</button>
-                                </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </div>
+        <div class="col-md-12">
+            <div class="card strpied-tabled-with-hover">
+                <div class="card-header d-flex justify-content-between">
+                    <h4 class="card-title">Tasks</h4>
+                    <a [routerLink]="['/tasks/create']" class="btn btn-success">Criar task</a>
+                </div>
+                <div class="card-body table-full-width table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                          <th>ID</th>
+                          <th>Título</th>
+                          <th>breve descricão</th>
+                          <th>Opçôes</th>
+                        </thead>
+                        <tbody *ngFor="let task of tasks">
+                            <tr>
+                              <td>{{task.id}}</td>
+                              <td>{{task.attributes.title}}</td>
+                              <td>{{task.attributes.shortdescription}}...</td>
+                              <td>
+                                <a *ngIf="task.attributes.done != true" [routerLink]="['/tasks/editar', task.id]" class="btn btn-info mr-3">Editar</a>
+                                <a *ngIf="task.attributes.done == true"  class="btn-fechado mr-3">Fechado</a>
+                                <a [routerLink]="['/tasks/visualizar', task.id]" class="btn btn-secondary mr-3" >Visualizar</a>
+                                <button (click)="excluir_task(task.id)" class="btn btn-danger" >Excluír</button>
+                              </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
       </div>
   </div>
 </div>
