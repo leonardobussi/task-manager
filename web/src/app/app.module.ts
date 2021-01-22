@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { EditarComponent } from './principais/editar/editar.component';
 import { VisualizarComponent } from './principais/visualizar/visualizar.component';
 import { CreateComponent } from './principais/create/create.component';
+import { LoginComponent } from './sign/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CreateComponent } from './principais/create/create.component';
     FooterComponent,
     EditarComponent,
     VisualizarComponent,
-    CreateComponent
+    CreateComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
