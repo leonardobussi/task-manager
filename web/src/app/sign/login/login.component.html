@@ -1,0 +1,18 @@
+<h2>Sign in</h2>
+
+<form>
+  <div class="form-group">
+    <label class="h5" for="title">Email <i style="color:red;" >*</i> </label>
+    <input type="email" class="form-control"  name="email" [(ngModel)]="email" id="email" placeholder="teste@serviço.com"/>
+  </div>
+  <div class="form-group">
+    <label class="h5" for="description">Senha  <i style="color:red;" >*</i> </label>
+    <input type="password" class="form-control"  name="password" [(ngModel)]="password" id="password" placeholder="*******"/>
+  </div>
+
+  <div class="form-group mt-2">
+    <button class="btn btn-primary w-100" (click)="submit_salva()" type="submit" id="botao">Entrar</button>
+  </div>
+
+</form>
+
