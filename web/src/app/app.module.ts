@@ -10,6 +10,7 @@ import { TasksComponent } from './principais/tasks/tasks.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { EditarComponent } from './principais/editar/editar.component';
 import { VisualizarComponent } from './principais/visualizar/visualizar.component';
+import { CreateComponent } from './principais/create/create.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { VisualizarComponent } from './principais/visualizar/visualizar.componen
     TasksComponent,
     FooterComponent,
     EditarComponent,
-    VisualizarComponent
+    VisualizarComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

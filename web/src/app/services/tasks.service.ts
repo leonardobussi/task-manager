@@ -31,8 +31,8 @@ export class TasksService {
   constructor( private http: HttpClient) { }
 
 
-  create(tasks: tasks): Observable<any> {
-    return this.http.post<tasks>(this.url, tasks, {
+  create(tasks): Observable<any> {
+    return this.http.post<any>(this.url, tasks, {
       headers: this.headers
     })
   }
