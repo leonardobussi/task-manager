@@ -8,14 +8,14 @@
                     <a [routerLink]="['/tasks/create']" class="btn btn-success">Criar task</a>
                 </div>
                 <div class="card-body table-full-width table-responsive">
-                    <table class="table table-hover table-striped">
+                    <table class="table table-hover table-bordered table-striped">
                         <thead>
                           <th>ID</th>
                           <th>Título</th>
                           <th>breve descricão</th>
                           <th>Opçôes</th>
                         </thead>
-                        <tbody *ngFor="let task of tasks">
+                        <tbody  *ngFor="let task of tasks">
                             <tr>
                               <td>{{task.id}}</td>
                               <td>{{task.attributes.title}}</td>
