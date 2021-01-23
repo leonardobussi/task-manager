@@ -30,11 +30,11 @@ export class NavbarComponent implements OnInit {
       this.is_open = true
     }
   }
+
+  
   
   deslogar(){
     this.service.deslogar(this.token).subscribe((data: any)=>{
-      localStorage.removeItem('token')
-      localStorage.removeItem('email')
       this.ngOnInit()
       this.router.navigate(["/sign_in"])
     }, (error)=> {

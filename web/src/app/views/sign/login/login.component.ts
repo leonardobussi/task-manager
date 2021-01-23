@@ -19,20 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private service: SignService, private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit(): void {
-    // this.token = localStorage.getItem('token')
-
-    // this.token = localStorage.getItem('token')
-    // this.email = localStorage.getItem('email')
-
-    // if(typeof this.token !== typeof '' ){
-     
-    //   this.is_open = false
-    // }
-    // else {
-    //   this.is_open = true
-    // }
-  }
+  ngOnInit(): void {}
 
   submit_salva(){
     this.service.login({"email": this.email, "password": this.password}).subscribe((data:any) => {
