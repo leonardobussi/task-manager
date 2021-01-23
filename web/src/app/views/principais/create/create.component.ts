@@ -27,8 +27,6 @@ export class CreateComponent implements OnInit {
     (error)=>{
       console.log(error)
     })
-
-    // console.log(this.title, this.description, this.done, this.deadline)
   
   }
 

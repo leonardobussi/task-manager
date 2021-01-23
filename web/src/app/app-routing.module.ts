@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'tasks/editar/:id', component: EditarComponent},
   {path: 'tasks/visualizar/:id', component: VisualizarComponent},
   {path: 'tasks/create', component: CreateComponent},
-  {path: 'sign_in', component: LoginComponent},
+  {path: 'sign_in', component: LoginComponent}
 ];
 
 @NgModule({
