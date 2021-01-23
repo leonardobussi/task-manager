@@ -15,4 +15,7 @@ export class SignService {
   login(credencial): Observable<sign> {
     return this.http.post<sign>(this.url, credencial)
   }
+  deslogar(token): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${token}`)
+  }
 }
