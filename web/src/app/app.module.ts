@@ -5,13 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { TasksComponent } from './principais/tasks/tasks.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { EditarComponent } from './principais/editar/editar.component';
-import { VisualizarComponent } from './principais/visualizar/visualizar.component';
-import { CreateComponent } from './principais/create/create.component';
-import { LoginComponent } from './sign/login/login.component';
+import { NavbarComponent } from './views/components/navbar/navbar.component';
+import { TasksComponent } from './views/principais/tasks/tasks.component';
+import { FooterComponent } from './views/components/footer/footer.component';
+import { EditarComponent } from './views/principais/editar/editar.component';
+import { VisualizarComponent } from './views/principais/visualizar/visualizar.component';
+import { CreateComponent } from './views/principais/create/create.component';
+import { LoginComponent } from './views/sign/login/login.component';
 
 @NgModule({
   declarations: [
