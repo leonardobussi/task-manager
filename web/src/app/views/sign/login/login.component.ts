@@ -14,10 +14,24 @@ export class LoginComponent implements OnInit {
   password: string = ''
   is_message: string = ''
   is_msg: boolean = false
+  token: any
+  is_open: boolean = false
 
   constructor(private service: SignService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    // this.token = localStorage.getItem('token')
+
+    // this.token = localStorage.getItem('token')
+    // this.email = localStorage.getItem('email')
+
+    // if(typeof this.token !== typeof '' ){
+     
+    //   this.is_open = false
+    // }
+    // else {
+    //   this.is_open = true
+    // }
   }
 
   submit_salva(){
@@ -27,6 +41,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('email', data.data.attributes.email)
       this.is_message = ''
       this.is_msg = false
+      this.ngOnInit()
       this.router.navigate(["/tasks"])
 
     },

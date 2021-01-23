@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   token: any
   email: string = ''
   
-  is_open: boolean = false
+  public is_open: boolean = true
 
   constructor(private service: SignService, private route: ActivatedRoute, private router: Router ) { }
 
@@ -35,6 +35,7 @@ export class NavbarComponent implements OnInit {
     this.service.deslogar(this.token).subscribe((data: any)=>{
       localStorage.removeItem('token')
       localStorage.removeItem('email')
+      this.ngOnInit()
       this.router.navigate(["/sign_in"])
     }, (error)=> {
       console.log(error)
