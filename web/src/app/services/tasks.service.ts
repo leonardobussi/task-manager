@@ -16,15 +16,20 @@ import { HttpHeaders } from '@angular/common/http';
 })
 
 
+
 export class TasksService {
+
+
+  token = localStorage.getItem('token')
 
   // head = headersHttpJson()
   
   url = "https://bussitask.herokuapp.com/tasks"
 
+
   headers = new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'pX7A585odhSSyyZ8awcs'
+    'Authorization': this.token
   })
   
 

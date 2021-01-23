@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TasksService } from 'src/app/services/tasks.service';
+// import { tasks } from '../../../models/tasks.model';
+import { TasksService } from '../../../services/tasks.service';
 
-import datebr from '../../utils/Datebr'
+import datebr from '../../../utils/Datebr'
 @Component({
   selector: 'app-visualizar',
   templateUrl: './visualizar.component.html',

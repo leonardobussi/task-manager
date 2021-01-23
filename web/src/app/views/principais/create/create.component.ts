@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TasksService } from '../../services/tasks.service'
+import { TasksService } from '../../../services/tasks.service'
 
 @Component({
   selector: 'app-create',
