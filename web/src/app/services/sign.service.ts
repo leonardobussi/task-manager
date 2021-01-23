@@ -9,10 +9,15 @@ import { sign } from '../models/sign.model';
 export class SignService {
 
   url = "https://bussitask.herokuapp.com/sessions"
+ 
+  
 
   constructor(private http: HttpClient) { }
 
   login(credencial): Observable<sign> {
     return this.http.post<sign>(this.url, credencial)
+  }
+  deslogar(token): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${token}`)
   }
 }
