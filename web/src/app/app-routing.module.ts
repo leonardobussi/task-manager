@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // tasks
-import { EditarComponent } from './principais/editar/editar.component'
-import { TasksComponent } from "./principais/tasks/tasks.component"
-import { VisualizarComponent } from "./principais/visualizar/visualizar.component"
-import { CreateComponent } from "./principais/create/create.component"
+import { EditarComponent } from './views/principais/editar/editar.component'
+import { TasksComponent } from "./views/principais/tasks/tasks.component"
+import { VisualizarComponent } from "./views/principais/visualizar/visualizar.component"
+import { CreateComponent } from "./views/principais/create/create.component"
 
 // users
 
-import { LoginComponent } from "./sign/login/login.component"
+import { LoginComponent } from "./views/sign/login/login.component"
 
 
 const routes: Routes = [

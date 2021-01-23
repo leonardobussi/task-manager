@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TasksService } from 'src/app/services/tasks.service';
+// import { tasks } from '../../../models/tasks.model';
+import { TasksService } from '../../../services/tasks.service';
 
-
-import dateen from '../../utils/DateEn'
+// import datebr from '../../../utils/Datebr'
+import dateen from '../../../utils/DateEn'
 
 
 @Component({
