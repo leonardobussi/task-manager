@@ -9,6 +9,7 @@ import { sign } from '../models/sign.model';
 export class SignService {
 
   url = "https://bussitask.herokuapp.com/sessions"
+  urlRegister = "https://bussitask.herokuapp.com/users"
   
 
   constructor(private http: HttpClient) { }
@@ -18,5 +19,9 @@ export class SignService {
   }
   deslogar(token): Observable<any> {
     return this.http.delete<any>(`${this.url}/${token}`)
+  }
+
+  register(credencial): Observable<sign> {
+    return this.http.post<sign>(this.urlRegister, credencial)
   }
 }

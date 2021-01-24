@@ -10,6 +10,7 @@ import { CreateComponent } from "./views/principais/create/create.component"
 // users
 
 import { LoginComponent } from "./views/sign/login/login.component"
+import { RegisterComponent  } from "./views/sign/register/register.component"
 
 
 // guarda rotas
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'tasks/editar/:id', component: EditarComponent, canActivate: [AuthGuard]},
   {path: 'tasks/visualizar/:id', component: VisualizarComponent, canActivate: [AuthGuard]},
   {path: 'tasks/create', component: CreateComponent, canActivate: [AuthGuard]},
-  {path: 'sign_in', component: LoginComponent}
+  {path: 'sign_in', component: LoginComponent},
+  {path: 'sign_up', component: RegisterComponent}
 ];
 
 @NgModule({
