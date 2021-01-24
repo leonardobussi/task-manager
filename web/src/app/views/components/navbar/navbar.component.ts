@@ -12,35 +12,50 @@ import { SignService } from "../../../services/sign.service"
 export class NavbarComponent implements OnInit {
 
   token: any
-  email: string = ''
+  email: any
   
   public is_open: boolean = true
 
   constructor(private service: SignService, private route: ActivatedRoute, private router: Router ) { }
 
-  ngOnInit(): void {
-    this.token = localStorage.getItem('token')
-    this.email = localStorage.getItem('email')
+  async ngOnInit(): Promise<void> {
+    this.token = await localStorage.getItem('token')
+    this.email = await localStorage.getItem('email')
 
-    if(typeof this.token !== typeof '' ){
+    // if(typeof this.token !== typeof '' ){
      
-      this.is_open = false
-    }
-    else {
+    //   this.is_open = false
+    // }
+    // else {
+    //   this.is_open = true
+    // }
+
+    if(await this.token){
+     
       this.is_open = true
     }
+    else {
+      this.is_open = false
+    }
+
   }
+
+
 
   
   
   deslogar(){
-    this.service.deslogar(this.token).subscribe((data: any)=>{
+     this.service.deslogar(this.token).subscribe(async( data: any)=>{
+      await localStorage.removeItem('token')
+      await localStorage.removeItem('email')
       this.ngOnInit()
-      this.router.navigate(["/sign_in"])
+      await this.router.navigate(["/sign_in"])
     }, (error)=> {
       console.log(error)
     })
   }
+
+  
   
 
 }

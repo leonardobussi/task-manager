@@ -1,17 +1,17 @@
-<nav *ngIf="is_open" class="">
+<nav>
     <h1><a class="logo"  [routerLink]="['/']">LOGO</a></h1>
       <ul >
-        <li class="text-danger" >
+        <li *ngIf="is_open" class="text-danger" >
           {{email}}
         </li>
-        <li >
+        <li *ngIf="!is_open" >
           <a  [routerLink]="['/sign_in']">Logar</a>
         </li>
-        <li >
+        <li *ngIf="is_open" >
           <a style="color: aliceblue; cursor: pointer;" (click)="deslogar()" >deslogar</a>
         </li>
-        <li >
-          <a   [routerLink]="['/']">registrar</a>
+        <li *ngIf="!is_open" >
+          <a   [routerLink]="['/sign_up']">registrar</a>
         </li>
       </ul>
 </nav>

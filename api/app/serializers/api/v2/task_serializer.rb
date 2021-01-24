@@ -1,19 +1,32 @@
 class Api::V2::TaskSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :user_id, :done, 
-          :deadline, :created_at, :updated_at, :short_description,
-          :is_late, :deadline_to_br
+  attributes :id, :title, :description, :user, :done, 
+          :deadline, :shortdescription,
+          :islate, :update, :create
 
-  def short_description 
-    object.description[0..40]  if object.description.present?
+  def shortdescription 
+    shortdescription = object.description[0..40]  if object.description.present?
   end
 
-  def is_late 
-    Time.current > object.deadline if object.deadline.present?
+  def islate 
+    islate = Time.current > object.deadline if object.deadline.present?
   end
 
-  def deadline_to_br 
-    I18n.l(object.deadline, format: datetime) if object.deadline.present?
+  # def deadlinetobr 
+  #   deadlinetobr = I18n.l(object.deadline, format: datetime) if object.deadline.present?
+  # end
+
+  def update 
+    update = object.updated_at
   end
+
+  def create 
+    create = object.created_at
+  end
+
+  def user 
+    user = object.user_id
+  end
+
 
   belongs_to :user
 end
