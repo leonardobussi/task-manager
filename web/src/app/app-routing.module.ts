@@ -12,6 +12,11 @@ import { CreateComponent } from "./views/principais/create/create.component"
 import { LoginComponent } from "./views/sign/login/login.component"
 
 
+// guarda rotas
+
+import { AuthGuard } from "./guard/auth.guard"
+
+// rotas
 const routes: Routes = [
   {path: '', redirectTo: 'tasks', pathMatch: 'full'},
   {path: 'tasks', component: TasksComponent},
