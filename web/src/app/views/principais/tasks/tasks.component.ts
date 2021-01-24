@@ -21,6 +21,7 @@ export class TasksComponent implements OnInit {
 
   excluir_task(id){
       this.service.deletar(id).subscribe((data:any) => {
+        this.ngOnInit()
       }, (error)=>{
         console.log(error)
       })

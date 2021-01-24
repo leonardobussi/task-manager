@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: task_manager_api_development
+  database: task_manager_api_development2
   username: postgres
   password: 1998
   host: localhost
@@ -13,7 +13,7 @@ development:
 
 test:
   <<: *default
-  database: task_manager_api_test
+  database: task_manager_api_test2
 
 production:
   <<: *default

@@ -18,9 +18,9 @@ export class NavbarComponent implements OnInit {
 
   constructor(private service: SignService, private route: ActivatedRoute, private router: Router ) { }
 
-  ngOnInit(): void {
-    this.token = localStorage.getItem('token')
-    this.email = localStorage.getItem('email')
+  async ngOnInit(): Promise<void> {
+    this.token = await localStorage.getItem('token')
+    this.email = await localStorage.getItem('email')
 
     // if(typeof this.token !== typeof '' ){
      
@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
     //   this.is_open = true
     // }
 
-    if(this.token){
+    if(await this.token){
      
       this.is_open = true
     }
