@@ -19,10 +19,10 @@ import { AuthGuard } from "./guard/auth.guard"
 // rotas
 const routes: Routes = [
   {path: '', redirectTo: 'tasks', pathMatch: 'full'},
-  {path: 'tasks', component: TasksComponent},
-  {path: 'tasks/editar/:id', component: EditarComponent},
-  {path: 'tasks/visualizar/:id', component: VisualizarComponent},
-  {path: 'tasks/create', component: CreateComponent},
+  {path: 'tasks', component: TasksComponent, canActivate: [AuthGuard]},
+  {path: 'tasks/editar/:id', component: EditarComponent, canActivate: [AuthGuard]},
+  {path: 'tasks/visualizar/:id', component: VisualizarComponent, canActivate: [AuthGuard]},
+  {path: 'tasks/create', component: CreateComponent, canActivate: [AuthGuard]},
   {path: 'sign_in', component: LoginComponent}
 ];
 

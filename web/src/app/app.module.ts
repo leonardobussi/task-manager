@@ -13,6 +13,11 @@ import { VisualizarComponent } from './views/principais/visualizar/visualizar.co
 import { CreateComponent } from './views/principais/create/create.component';
 import { LoginComponent } from './views/sign/login/login.component';
 
+
+import { AuthGuard } from './guard/auth.guard'
+import { SignService } from './services/sign.service'
+import { TasksService } from './services/tasks.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +35,11 @@ import { LoginComponent } from './views/sign/login/login.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    SignService,
+    TasksService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
