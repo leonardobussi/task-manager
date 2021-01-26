@@ -21,6 +21,8 @@ export class VisualizarComponent implements OnInit {
 
   }
   public userId: number = 0;
+  is_message: string;
+  is_msg: boolean;
   
 
   constructor(private service: TasksService, private route: ActivatedRoute, private router: Router) { 
@@ -29,6 +31,10 @@ export class VisualizarComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarEspecifico(this.userId)
+  }
+
+  is_check(){
+    this.is_msg = false
   }
  
 
@@ -53,13 +59,13 @@ export class VisualizarComponent implements OnInit {
         deadline: odeadline 
       }
 
-      var d = data.data.attributes
 
-      console.log(d)
 
     },
     (error)=>{
-     console.log(error)
+      this.is_message = 'Erro ao listar, aperte F5 ou tente novamente mais tarde!'
+      this.is_msg = true
+
     })
   }
 

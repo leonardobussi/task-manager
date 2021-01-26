@@ -13,25 +13,42 @@ export class RegisterComponent implements OnInit {
   password: string = ''
   is_message: string = ''
   is_msg: boolean = false
+  is_messageSuccess: string;
+  is_msgSuccess: boolean;
 
   constructor(private service: SignService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  is_check(){
+    this.is_msg = false
+    this.is_msgSuccess = false
+  }
+
   submit_salva(){
     this.service.register({user:{"email": this.email, "password": this.password}}).subscribe(async (data:any) => {
       this.is_message = ''
       this.is_msg = false
-      console.log(data)
-      await this.router.navigate(["/sign_in"])
+
+      this.is_messageSuccess = 'Usuário registrado com sucesso!'
+      this.is_msgSuccess = true
+
+
+      
+      await this.router.navigate(["/sign_up"])
 
     },
     async (error)=>{
       console.log(error)
 
-      this.is_message = 'Erro ao registrar - se'
+      this.is_message = 'erro ao registrar usuário!'
       this.is_msg = true
+
+      this.is_messageSuccess = ''
+      this.is_msgSuccess = false
+
+
       await this.router.navigate(["/sign_up"])
       
     })

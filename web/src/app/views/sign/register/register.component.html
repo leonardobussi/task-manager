@@ -1,6 +1,31 @@
-<div *ngIf="is_msg == true" class="container">
-    <div class="alert alert-danger">
+<nav>
+  <h1> <a class="logo"  [routerLink]="['/']">LOGO</a></h1>
+    <ul>
+      <li>
+        <a  [routerLink]="['/sign_in']">Logar</a>
+      </li>
+      <li>
+        <a   [routerLink]="['/sign_up']">registrar</a>
+      </li>
+    </ul>
+</nav>
+<br><br>
+
+<div class="container">
+
+
+  <div *ngIf="is_msg == true" class="container">
+    <div style="display: flex; justify-content: space-between;"  class="alert alert-danger">
       <span>{{is_message}}</span>
+      <i (click)="is_check()"  style="color: red; font-weight: 600; cursor: pointer;">X</i>
+    </div>
+  </div>
+
+
+  <div *ngIf="is_msgSuccess == true" class="container">
+    <div style="display: flex; justify-content: space-between;"  class="alert alert-success">
+      <span>{{is_messageSuccess}}</span>
+      <i (click)="is_check()"  style="color: green; font-weight: 600; cursor: pointer;">X</i>
     </div>
   </div>
   
@@ -24,4 +49,7 @@
       
       </form>   
  </div> 
+</div>
+
+
   
