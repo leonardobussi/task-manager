@@ -6,6 +6,9 @@
 
 <div class="container">
 
+
+
+
   <div *ngIf="is_msg == true" class="container">
     <div style="display: flex; justify-content: space-between;"  class="alert alert-danger">
       <span>{{is_message}}</span>
@@ -15,7 +18,12 @@
 
 
 
-  <h2>Detalhes</h2>
+  <h2>
+    Detalhes
+    <div *ngIf="loading" class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+      <span style="text-align: center;" class="sr-only">Loading...</span>
+    </div>
+  </h2>
 
   <div class="card">
     <div class="card-body">

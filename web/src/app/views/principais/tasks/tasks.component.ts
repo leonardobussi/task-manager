@@ -12,6 +12,7 @@ export class TasksComponent implements OnInit {
   is_msg: boolean = false
   is_messageSuccess: string;
   is_msgSuccess: boolean;
+  loading: boolean = false;
 
   constructor(private service: TasksService ) { }
 
@@ -26,14 +27,14 @@ export class TasksComponent implements OnInit {
 
 
   excluir_task(id){
+    this.loading = true
       this.service.deletar(id).subscribe((data:any) => {
         this.is_message = ''
         this.is_msg = false
 
         this.is_messageSuccess = 'Sucesso ao excluir'
         this.is_msgSuccess = true
-
-
+        this.loading = false
         this.ngOnInit()
       }, (error)=>{
        
@@ -43,14 +44,16 @@ export class TasksComponent implements OnInit {
 
         this.is_messageSuccess = ''
         this.is_msgSuccess = false
-
+        this.loading = false
       })
     }
 
 
   listarTodos(){
+    this.loading = true
     this.service.listarTodos().subscribe((data:any) => {
       this.tasks = data.data
+      this.loading = false
     },
     (error)=> {
         this.is_message = 'Erro ao listar, aperte F5 ou tente novamente mais tarde!'
@@ -58,6 +61,7 @@ export class TasksComponent implements OnInit {
 
         this.is_messageSuccess = ''
         this.is_msgSuccess = false
+        this.loading = false
     })
   }
 

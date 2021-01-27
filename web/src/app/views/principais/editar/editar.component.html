@@ -41,7 +41,10 @@
     </div>
   
     <div class="form-group mt-2">
-      <button class="btn btn-primary w-100" (click)="submit_salva()" type="submit" id="botao">Salvar</button>
+      <button class="btn btn-primary w-100" (click)="submit_salva()" type="submit" id="botao">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Salvar
+      </button>
     </div>
   
   </form>
