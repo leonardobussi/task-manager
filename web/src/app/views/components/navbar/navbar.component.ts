@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
 
   token: any
   email: any
+  loading: boolean = false
 
   constructor(private service: SignService, private route: ActivatedRoute, private router: Router ) { }
 
@@ -26,13 +27,16 @@ export class NavbarComponent implements OnInit {
   
   
   deslogar(){
+    this.loading = true
+
      this.service.deslogar(this.token).subscribe(async( data: any)=>{
+      this.loading = false
       await localStorage.removeItem('token')
       await localStorage.removeItem('email')
       this.ngOnInit()
       await this.router.navigate(["/sign_in"])
     }, (error)=> {
-      console.log(error)
+      this.loading = false
     })
   }
 

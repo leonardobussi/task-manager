@@ -5,7 +5,10 @@
           {{email}}
         </li>
         <li>
-          <a style="color: aliceblue; cursor: pointer;" (click)="deslogar()" >deslogar</a>
+          <a style="color: aliceblue; cursor: pointer;" (click)="deslogar()" >
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            deslogar
+          </a>
         </li>
       </ul>
 </nav>
