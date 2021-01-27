@@ -31,6 +31,8 @@ export class EditarComponent implements OnInit {
       deadline: any
 
   public userId = 0
+  is_msg: boolean;
+  is_message: string;
 
   constructor(private service: TasksService, private route: ActivatedRoute, private router: Router) { 
     this.route.params.subscribe(params => this.userId = params['id']);
@@ -39,19 +41,22 @@ export class EditarComponent implements OnInit {
   ngOnInit(): void {
     this.listarEspecifico(this.userId)
   }
-
+  
+  is_check(){
+    this.is_msg = false
+  }
 
 
   submit_salva(){
     this.service.editar(this.userId, {"title": this.title, "description":this.description,"done": this.done, "deadline": this.deadline}).subscribe((dados:any) => {
+      this.is_message = ''
+      this.is_msg = false
       this.router.navigate(["/tasks/visualizar", this.userId])
     },
     (error)=>{
-      console.log(error)
+      this.is_message = 'Erro ao editar a task!'
+      this.is_msg = true
     })
-
-    console.log(this.title, this.description, this.done, this.deadline)
-  
   }
 
 
