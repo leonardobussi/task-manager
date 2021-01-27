@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 // import { sign } from '../../../models/sign.model'
 import { SignService } from '../../../services/sign.service'
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,19 +16,27 @@ export class LoginComponent implements OnInit {
   is_message: string = ''
   is_msg: boolean = false
   token: any
+  loading: boolean = false
 
   constructor(private service: SignService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+
+  is_check(){
+    this.is_msg = false
+  }
+
   submit_salva(){
+    this.loading = true
     this.service.login({"email": this.email, "password": this.password}).subscribe(async (data:any) => {
-      // this.router.navigate(["/tasks/visualizar", data.data.id])
       await localStorage.setItem('token', data.data.attributes.token)
       await localStorage.setItem('email', data.data.attributes.email)
+      this.ngOnInit()
       this.is_message = ''
       this.is_msg = false
+      this.loading = false
 
       await this.router.navigate(["/tasks"])
 
@@ -35,8 +44,9 @@ export class LoginComponent implements OnInit {
     async (error)=>{
       console.log(error)
 
-      this.is_message = 'Email ou senha incorreto'
+      this.is_message = 'O email e senha inserido não corresponde a nenhuma conta'
       this.is_msg = true
+      this.loading = false
      await this.router.navigate(["/sign_in"])
       
     })

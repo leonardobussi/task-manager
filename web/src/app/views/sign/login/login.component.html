@@ -1,25 +1,49 @@
-<div *ngIf="is_msg == true" class="container">
-  <div class="alert alert-danger">
-    <span>{{is_message}}</span>
+<nav>
+  <h1> <a class="logo"  [routerLink]="['/']">LOGO</a></h1>
+    <ul>
+      <li>
+        <a  [routerLink]="['/sign_in']">Logar</a>
+      </li>
+      <li>
+        <a   [routerLink]="['/sign_up']">registrar</a>
+      </li>
+    </ul>
+</nav>
+
+<br>
+<br>
+
+<div class="container">
+
+  
+
+  <div *ngIf="is_msg == true" class="container">
+    <div style="display: flex; justify-content: space-between;"  class="alert alert-danger">
+      <span>{{is_message}}</span>
+      <i (click)="is_check()"  style="color: red; font-weight: 600; cursor: pointer;">X</i>
+    </div>
   </div>
+  
+  
+  <h2>Sign in</h2>
+  
+  <form>
+    <div class="form-group">
+      <label class="h5" for="title">Email <i style="color:red;" >*</i> </label>
+      <input type="email" class="form-control"  name="email" [(ngModel)]="email" id="email" placeholder="teste@serviço.com"/>
+    </div>
+    <div class="form-group">
+      <label class="h5" for="description">Senha  <i style="color:red;" >*</i> </label>
+      <input type="password" class="form-control"  name="password" [(ngModel)]="password" id="password" placeholder="*******"/>
+    </div>
+  
+    <div class="form-group mt-2">
+      <button class="btn btn-primary w-100" (click)="submit_salva()" type="submit" id="botao">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Entrar
+      </button>
+    </div>
+  </form>  
 </div>
 
-
-<h2>Sign in</h2>
-
-<form>
-  <div class="form-group">
-    <label class="h5" for="title">Email <i style="color:red;" >*</i> </label>
-    <input type="email" class="form-control"  name="email" [(ngModel)]="email" id="email" placeholder="teste@serviço.com"/>
-  </div>
-  <div class="form-group">
-    <label class="h5" for="description">Senha  <i style="color:red;" >*</i> </label>
-    <input type="password" class="form-control"  name="password" [(ngModel)]="password" id="password" placeholder="*******"/>
-  </div>
-
-  <div class="form-group mt-2">
-    <button class="btn btn-primary w-100" (click)="submit_salva()" type="submit" id="botao">Entrar</button>
-  </div>
-
-</form>
 
