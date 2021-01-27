@@ -6,11 +6,15 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  padding: 0 10%;
 }
 
 #container strong {
   font-size: 20px;
   line-height: 26px;
+}
+#container h1 {
+  color: #fff;
 }
 
 #container p {
@@ -24,4 +28,13 @@
 
 #container a {
   text-decoration: none;
+}
+ion-content  {
+  --background: linear-gradient(30deg, rgb(2, 2, 7), rgb(2, 0, 19) 90%);
+  // --background: url('/assets/Computer.png')  100% 100% no-repeat;
+}
+
+ion-toolbar  {
+  --background: linear-gradient(30deg, rgb(2, 2, 7), rgb(2, 0, 19) 90%);
+  --color: #fff;
 }
