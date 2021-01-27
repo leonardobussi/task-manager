@@ -33,20 +33,18 @@
                       <a [routerLink]="['/tasks/create']" class="btn btn-success">Criar task</a>
                   </div>
                   <div class="card-body table-full-width table-responsive">
-                      <table class="table table-hover table-bordered table-striped">
+                      <table class="table table-hover table-bordered table-striped" >
                           <thead>
-                            <th>ID</th>
                             <th>Título</th>
                             <th>breve descricão</th>
                             <th>Opçôes</th>
                           </thead>
                           <tbody  *ngFor="let task of tasks">
                               <tr>
-                                <td>{{task.id}}</td>
-                                <td>{{task.attributes.title}}</td>
+                                <td >{{task.attributes.title}}</td>
                                 <td>{{task.attributes.shortdescription}}...</td>
                                 <td>
-                                  <a *ngIf="task.attributes.done != true" [routerLink]="['/tasks/editar', task.id]" class="btn btn-info mr-3">Editar</a>
+                                  <a *ngIf="task.attributes.done != true" [routerLink]="['/tasks/editar', task.id]" class="btn btn-info mr-3 btn-edit">Editar</a>
                                   <a *ngIf="task.attributes.done == true"  class="btn-fechado mr-3">Fechado</a>
                                   <a [routerLink]="['/tasks/visualizar', task.id]" class="btn btn-secondary mr-3" >Visualizar</a>
                                   <button (click)="excluir_task(task.id)" class="btn btn-danger" >Excluír</button>
