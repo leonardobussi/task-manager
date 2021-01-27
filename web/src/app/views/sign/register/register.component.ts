@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   is_msg: boolean = false
   is_messageSuccess: string;
   is_msgSuccess: boolean;
+  loading: boolean = false
 
   constructor(private service: SignService, private route: ActivatedRoute, private router: Router) { }
 
@@ -27,12 +28,14 @@ export class RegisterComponent implements OnInit {
   }
 
   submit_salva(){
+    this.loading = true
     this.service.register({user:{"email": this.email, "password": this.password}}).subscribe(async (data:any) => {
       this.is_message = ''
       this.is_msg = false
 
       this.is_messageSuccess = 'Usuário registrado com sucesso!'
       this.is_msgSuccess = true
+      this.loading = false
 
 
       
@@ -47,10 +50,8 @@ export class RegisterComponent implements OnInit {
 
       this.is_messageSuccess = ''
       this.is_msgSuccess = false
-
-
+      this.loading = false
       await this.router.navigate(["/sign_up"])
-      
     })
   }
 
