@@ -8,15 +8,15 @@
 
 <ion-content [fullscreen]="true">
   <ion-container>
-    <div id="container" style="text-align: center; margin-top: 10px;">
+    <div id="container">
       <h1>Seja bem-vindo</h1>
       <p>Coloque suas atividade em dia com o app task manager</p>
-      <a class="btn btn-info mt-2" href="#">Ver as tasks</a>
-      <img  style="width: 100%; height: 250px;"  src="assets/Computer.png"/>
+      <a class="btn btn-info mt-2" [routerLink]="['/tasks']"  >Ver as tasks</a>
+      <img src="assets/Computer.png"/>
 
       <div class="link">
         <p>Registre-se gratuitamente</p>
-        <a class="btn btn-primary mt-2" href="#">Registrar</a>
+        <a class="btn btn-primary mt-2"  >Registrar</a>
         <br>
         <br>
         <p>Caso já tenha uma conta</p>

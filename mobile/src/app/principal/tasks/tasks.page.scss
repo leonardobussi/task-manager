@@ -1,0 +1,25 @@
+ion-content  {
+  --background: linear-gradient(30deg, rgb(2, 2, 7), rgb(2, 0, 19) 90%);
+  // --background: url('/assets/Computer.png')  100% 100% no-repeat;
+}
+
+ion-toolbar  {
+  --background: linear-gradient(30deg, rgb(2, 2, 7), rgb(2, 0, 19) 90%);
+  --color: #fff;
+}
+.container{
+  margin: 20px 0;
+}
+.btn-fechado{
+  background: rgba(134, 134, 134, 0.219);
+  color: #fff;
+  box-shadow: none;
+}
+.btn-fechado:hover{
+  text-decoration: none;
+}
+table .btn{
+  font-size: 10px;
+  margin-bottom: 4px;
+  width: 100%;
+}

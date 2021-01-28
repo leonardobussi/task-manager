@@ -1,9 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>tasks</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-<h1>oi</h1>
+<div class="container">
+
+  <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+              <div class="card bg-dark text-white strpied-tabled-with-hover">
+                  <div class="card-header d-flex justify-content-between">
+                      <h4 class="card-title">
+                        Tasks
+                      </h4>
+                      <a [routerLink]="['/tasks/create']" class="btn btn-success">Criar task</a>
+                  </div>
+                  <div class="card-body table-full-width table-responsive">
+                      <table class="table text-white table-hover table-bordered table-striped" >
+                          <thead>
+                            <th>Título</th>
+                            <th>Opçôes</th>
+                          </thead>
+                          <tbody  *ngFor="let task of tasks">
+                              <tr>
+                                <td class="text-left" >{{task.title}}</td>
+                                <td>
+                                  <a *ngIf="task.done != true" [routerLink]="['/tasks/editar', task.id]" class="btn btn-info">Editar</a>
+                                  <a [routerLink]="['/visualizar']" class="btn btn-secondary" >Visualizar</a>
+                                  <button (click)="excluir_task(task.id)" class="btn btn-danger" >Excluír</button>
+                                </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
 </ion-content>

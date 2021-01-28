@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'tasks',
     loadChildren: () => import('./principal/tasks/tasks.module').then( m => m.TasksPageModule)
   },
+  {
+    path: 'visualizar',
+    loadChildren: () => import('./principal/visualizacao/visualizacao.module').then( m => m.VisualizacaoPageModule)
+  },
 ];
 
 @NgModule({
