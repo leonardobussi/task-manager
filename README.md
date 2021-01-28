@@ -4,7 +4,7 @@
 * meu site top
 
 [https://taskks.herokuapp.com/tasks](https://taskks.herokuapp.com/tasks)
-## routes
+## routes (api versao 1)
 
 ### users
 * post(add user) => [http://localhost:3000/api/v1/users/](http://localhost:3000/api/v1/users/)
@@ -43,6 +43,9 @@ when requesting via post, add in the body form-data field <br/>
 
 <br/>
 
+## api versao 2
+
+* estou com preguiça para documentar
 ## description
 
 This README would normally document whatever steps are necessary to get the
