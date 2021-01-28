@@ -10,3 +10,24 @@ ion-content  {
 h2{
   color: #fff;
 }
+.btn-aberto{
+  background: rgb(119, 255, 171);
+  color: #fff;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 5px;
+  width: 120px;
+  text-align: center;
+}
+.btn-fechado{
+  background: rgb(245, 109, 120);
+  color: #fff;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 5px;
+  width: 120px;
+  text-align: center;
+}
+.btn-fechado:hover{
+  text-decoration: none;
+} 

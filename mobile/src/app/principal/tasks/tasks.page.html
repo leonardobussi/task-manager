@@ -10,7 +10,7 @@
                       <h4 class="card-title">
                         Tasks
                       </h4>
-                      <a [routerLink]="['/tasks/create']" class="btn btn-success">Criar task</a>
+                      <a [routerLink]="['/criar']" class="btn btn-success">Criar task</a>
                   </div>
                   <div class="card-body table-full-width table-responsive">
                       <table class="table text-white table-hover table-bordered table-striped" >
@@ -22,7 +22,7 @@
                               <tr>
                                 <td class="text-left" >{{task.title}}</td>
                                 <td>
-                                  <a *ngIf="task.done != true" [routerLink]="['/tasks/editar', task.id]" class="btn btn-info">Editar</a>
+                                  <a *ngIf="task.done != true" [routerLink]="['/editar']" class="btn btn-info">Editar</a>
                                   <a [routerLink]="['/visualizar']" class="btn btn-secondary" >Visualizar</a>
                                   <button (click)="excluir_task(task.id)" class="btn btn-danger" >Excluír</button>
                                 </td>

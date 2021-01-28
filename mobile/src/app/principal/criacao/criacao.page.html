@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="container">
+    <div class="header">
+      <a [routerLink]="['/tasks']">volta</a>
+      
+    </div>
+
+    <h2>Criar task</h2>
+
+    <form>
+      <div class="form-group">
+        <label class="h5 text-white" for="title">Título <i style="color:red;" >*</i> </label>
+        <input type="text" class="form-control" value="sbfjbf" name="title" [(ngModel)]="title" id="title" placeholder="titulo"/>
+      </div>
+      <div class="form-group">
+        <label class="h5 text-white" for="description">Descrição</label>
+        <textarea class="form-control" name="description" value="dkf dnfd dnfjdnf dnfj" [(ngModel)]="description" id="description" placeholder="descrição" rows="5"></textarea>
+      </div>
+    
+      <label class="h5 text-white" for="dataconclui">Data para concluir</label>
+      <div class="input-group date" data-provide="datepicker">
+        <input type="date"  class="form-control" id="dataconclui" value="" name="deadline" [(ngModel)]="deadline" />
+      </div>
+    
+    
+        <div class="form-group mt-5">
+        <label class="form-label h5 text-white" id="checkLabel" for="done">
+          finalizar
+        </label>
+        <input class="ml-3" type="checkbox" name="done" value="" checked="" [(ngModel)]="done" id="done"/>
+      </div>
+    
+      <div class="form-group mt-2">
+        <button class="btn btn-primary w-100" (click)="submit_salva()" type="submit" id="botao">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Salvar
+        </button>
+      </div>
+    
+    </form>
+  </div>
+
+</ion-content>
