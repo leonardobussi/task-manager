@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TaskService } from 'src/app/service/task.service';
 
 @Component({
   selector: 'app-visualizacao',
@@ -7,9 +9,62 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisualizacaoPage implements OnInit {
 
-  constructor() { }
+  t = {
+    title: '',
+    description: '',
+    update: '',
+    done: null,
+    islate: null,
+    deadline: ''
+
+  }
+  public userId: number = 0;
+  // is_message: string;
+  // is_msg: boolean;
+  // loading: boolean = false;
+
+  constructor(private service: TaskService, private route: ActivatedRoute, private router: Router) {
+    this.route.params.subscribe(params => this.userId = params['id']);
+   }
 
   ngOnInit() {
+    this.listarEspecifico(this.userId)
+  }
+  // is_check(){
+  //   this.is_msg = false
+  // }
+
+  listarEspecifico(id:number){
+    // this.loading = true
+    this.service.listarEspecifico(id).subscribe((data:any) => {
+
+     
+
+      // if (data.data.attributes.deadline == null){
+      //    data.data.attributes.deadline == null
+      // }
+      // else {
+      //   var odeadline = datebr(data.data.attributes.deadline)
+      // }
+
+      this.t = {
+        title: data.data.attributes.title,
+        description: data.data.attributes.description,
+        update: data.data.attributes.update,
+        done: data.data.attributes.done,
+        islate: data.data.attributes.islate,
+        deadline: data.data.attributes.deadline 
+      }
+
+
+      // this.loading = false
+
+    },
+    (error)=>{
+      // this.is_message = 'Erro ao listar, aperte F5 ou tente novamente mais tarde!'
+      // this.is_msg = true
+      // this.loading = false
+    })
   }
 
 }
