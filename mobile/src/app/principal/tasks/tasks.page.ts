@@ -12,24 +12,6 @@ export class TasksPage implements OnInit {
   constructor(private service: TaskService) { }
 
   ngOnInit() {
-    // this.tasks = [
-    //   {
-    //     id: 1,
-    //     title: 'tiiii',
-    //     done: true
-    //   },
-    //   {
-    //     id: 2,
-    //     title: 'jininn',
-    //     done: false
-    //   },
-    //   {
-    //     id: 3,
-    //     title: 'llllls asmaksa sjanjsanssjan snns sjduwshdqhuwqhuuhquqhu ',
-    //     done: false
-    //   }
-    // ];
-
     this.listarTodos()
 
   }
@@ -39,10 +21,8 @@ export class TasksPage implements OnInit {
     this.service.listarTodos().subscribe((data:any) => {
       this.tasks = data.data
       // this.loading = false
-      console.log(this.tasks)
     },
     (error)=> {
-      console.log(error)
         // this.is_message = 'Erro ao listar, aperte F5 ou tente novamente mais tarde!'
         // this.is_msg = true
 
