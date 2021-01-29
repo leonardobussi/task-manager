@@ -16,11 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./principal/tasks/tasks.module').then( m => m.TasksPageModule)
   },
   {
-    path: 'visualizar',
+    path: 'visualizar/:id',
     loadChildren: () => import('./principal/visualizacao/visualizacao.module').then( m => m.VisualizacaoPageModule)
   },
   {
-    path: 'editar',
+    path: 'editar/:id',
     loadChildren: () => import('./principal/edicao/edicao.module').then( m => m.EdicaoPageModule)
   },
   {
