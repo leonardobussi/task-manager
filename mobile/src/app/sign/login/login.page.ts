@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SignService } from 'src/app/service/sign.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,11 @@ export class LoginPage implements OnInit {
   // token: any
   // loading: boolean = false
 
-  constructor(private service: SignService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+      private service: SignService,
+      private route: ActivatedRoute,
+       private router: Router,
+        private storage: Storage) { }
 
   ngOnInit(): void {
   }
@@ -27,17 +32,14 @@ export class LoginPage implements OnInit {
   // }
 
   submit_salva(){
-    console.log("------- click ---------")
-
-    this.service.login({"email": this.email, "password": this.password}).subscribe((data) => {
+    this.service.login({"email": this.email, "password": this.password}).subscribe((data: any) => {
       // this.loading = true
-  //     // await localStorage.setItem('token', data.data.attributes.token)
+      localStorage.setItem('token', data.data.attributes.token)
   //     // await localStorage.setItem('email', data.data.attributes.email)
   //     this.ngOnInit()
   //     // this.is_message = ''
   //     // this.is_msg = false
   //     // this.loading = false
-        console.log(data)
         this.router.navigate(["/tasks"])
     }, (error)=>{
   //     // this.is_message = 'O email e senha inserido não corresponde a nenhuma conta'

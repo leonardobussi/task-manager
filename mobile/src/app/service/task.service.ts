@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Storage } from "@ionic/storage"
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
   url = "https://bussitask.herokuapp.com/tasks"
+  token: any = "";
 
+ 
+  constructor( private http: HttpClient, public storage: Storage) { }
 
-
-  constructor( private http: HttpClient) { }
+  
 
   headers = new HttpHeaders({
+   
     'Content-Type':  'application/json',
-    'Authorization': "ssRgxKi6sKLZZqvcUwPs"
+    'Authorization': ""+localStorage.getItem('token')
   })
-
 
 
   listarTodos(){
