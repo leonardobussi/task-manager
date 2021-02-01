@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class TasksPage implements OnInit {
   tasks: Array<any>
   token: any
+  loading: boolean = false
 
   constructor(
     private service: TaskService,
@@ -26,11 +27,11 @@ export class TasksPage implements OnInit {
   }
 
   listarTodos(){
-    // this.loading = true
+    this.loading = true
     this.service.listarTodos().subscribe((data:any) => {
       this.tasks = data.data
       this.ngOnInit()
-      // this.loading = false
+      this.loading = false
     },
     (error)=> {
         // this.is_message = 'Erro ao listar, aperte F5 ou tente novamente mais tarde!'
@@ -38,7 +39,7 @@ export class TasksPage implements OnInit {
 
         // this.is_messageSuccess = ''
         // this.is_msgSuccess = false
-        // this.loading = false
+        this.loading = false
     })
   }
 
@@ -46,14 +47,14 @@ export class TasksPage implements OnInit {
   
 
   excluir_task(id){
-    // this.loading = true
+    this.loading = true
       this.service.deletar(id).subscribe((data:any) => {
         // this.is_message = ''
         // this.is_msg = false
 
         // this.is_messageSuccess = 'Sucesso ao excluir'
         // this.is_msgSuccess = true
-        // this.loading = false
+        this.loading = false
         this.ngOnInit()
       }, (error)=>{
        
@@ -63,7 +64,7 @@ export class TasksPage implements OnInit {
 
         // this.is_messageSuccess = ''
         // this.is_msgSuccess = false
-        // this.loading = false
+        this.loading = false
       })
     }
 

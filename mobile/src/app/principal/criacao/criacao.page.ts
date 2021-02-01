@@ -17,7 +17,7 @@ export class CriacaoPage implements OnInit {
   // is_msgSuccess: boolean;
   // is_message: string;
   // is_messageSuccess: string;
-  // loading: boolean = false;
+  loading: boolean = false;
 
   constructor(private service: TaskService, private router: Router) { }
 
@@ -29,16 +29,16 @@ export class CriacaoPage implements OnInit {
   // }
 
   submit_salva(){
-    // this.loading = true
+    this.loading = true
     this.service.create({"title": this.title, "description":this.description,"done": this.done, "deadline": this.deadline}).subscribe((data:any) => {
       // this.is_message = ''
       // this.is_msg = false
-      // this.loading = false
+      this.loading = false
       this.router.navigate(["visualizar", data.data.id])
       // this.router.navigate(["tasks"])
     },
     (error)=>{
-      // this.loading = false
+      this.loading = false
       // this.is_message = 'Erro ao criar task!'
       // this.is_msg = true
     })

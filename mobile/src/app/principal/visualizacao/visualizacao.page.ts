@@ -21,7 +21,7 @@ export class VisualizacaoPage implements OnInit {
   public userId: number = 0;
   // is_message: string;
   // is_msg: boolean;
-  // loading: boolean = false;
+  loading: boolean = false;
 
   constructor(private service: TaskService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => this.userId = params['id']);
@@ -35,7 +35,7 @@ export class VisualizacaoPage implements OnInit {
   // }
 
   listarEspecifico(id:number){
-    // this.loading = true
+    this.loading = true
     this.service.listarEspecifico(id).subscribe((data:any) => {
 
      
@@ -57,7 +57,7 @@ export class VisualizacaoPage implements OnInit {
       }
 
 
-      // this.loading = false
+      this.loading = false
 
     },
     (error)=>{

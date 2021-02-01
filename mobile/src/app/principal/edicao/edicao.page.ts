@@ -24,7 +24,7 @@ export class EdicaoPage implements OnInit {
   public userId = 0
   // is_msg: boolean;
   // is_message: string;
-  // loading: boolean = false;
+  loading: boolean = false;
 
   constructor(private service: TaskService, private route: ActivatedRoute, private router: Router) { 
     this.route.params.subscribe(params => this.userId = params['id']);
@@ -38,17 +38,17 @@ export class EdicaoPage implements OnInit {
   // }
 
   submit_salva(){
-    // this.loading = true
+    this.loading = true
     this.service.editar(this.userId, {"title": this.title, "description":this.description,"done": this.done, "deadline": this.deadline}).subscribe((dados:any) => {
       // this.is_message = ''
       // this.is_msg = false
-      // this.loading = false
+      this.loading = false
       this.router.navigate(["/visualizar", this.userId])
     },
     (error)=>{
       // this.is_message = 'Erro ao editar a task!'
       // this.is_msg = true
-      // this.loading = false
+      this.loading = false
     })
   }
 
