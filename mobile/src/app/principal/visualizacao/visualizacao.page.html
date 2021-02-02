@@ -1,12 +1,20 @@
 <ion-content>
   <div class="container">
     <div class="header">
-      <a [routerLink]="['/tasks']">volta</a>
-      
+      <a [routerLink]="['/tasks']">volta</a>  
     </div>
-  
+
+
+    <div *ngIf="is_msg == true" class="container">
+      <div style="display: flex; justify-content: space-between;"  class="alert alert-danger">
+        <span>{{is_message}}</span>
+        <i (click)="is_check()"  style="color: red; font-weight: 600; cursor: pointer;">X</i>
+      </div>
+    </div>
+
+
+
     <div class="card bg-dark text-white">
-      
       <div class="card-body">
         <h3 class="card-title">{{t.title}}</h3>
         <h6 class="card-text">{{t.description}}</h6>
@@ -15,7 +23,11 @@
         <p class="text-danger" *ngIf="t.done == false && t.islate == true">Atrasado - {{t.deadline}}</p>
         <p class="text-success" *ngIf="t.islate == false && t.done == false">Em dia - <i style="font-size: 12px;">{{t.deadline}}</i></p>
         <p class="card-text"><small class="text-muted">Útima atualização - {{t.update}}</small></p>
-      </div>
+     </div>
     </div>
+    <div style="padding: 0 40%" > 
+      <span *ngIf="loading" class="spinner-border spinner-border-sm text-white" style="width: 80px; height: 80px;" role="status" aria-hidden="true"></span>
+    </div>
+    
   </div>
 </ion-content>

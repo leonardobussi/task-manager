@@ -10,6 +10,9 @@ import { SignService } from 'src/app/service/sign.service';
 export class RegistrarPage implements OnInit {
   email: string = ''
   password: string = ''
+  loading: boolean = false
+  is_message: string = ''
+  is_msg: boolean = false
 
   constructor(private service: SignService, private route: ActivatedRoute, private router: Router) { }
 
@@ -17,24 +20,24 @@ export class RegistrarPage implements OnInit {
   }
 
 
-  // is_check(){
-  //   this.is_msg = false
-  // }
+  is_check(){
+    this.is_msg = false
+  }
 
   submit_salva(){
+    this.loading = true
     this.service.register({"user":{"email": this.email, "password": this.password}}).subscribe((data: any) => {
-      // this.loading = true
       localStorage.setItem('token', data.data.attributes.token)
   //     this.ngOnInit()
-  //     // this.is_message = ''
-  //     // this.is_msg = false
-  //     // this.loading = false
+        this.is_message = ''
+        this.is_msg = false
+        this.loading = false
         this.router.navigate(["/tasks"])
     }, (error)=>{
-  //     // this.is_message = 'O email e senha inserido não corresponde a nenhuma conta'
-  //     // this.is_msg = true
-  //     // this.loading = false
-      this.router.navigate(["/registrar"])
+        this.is_message = 'O email e senha inserido não não são aceitos'
+        this.is_msg = true
+        this.loading = false
+        this.router.navigate(["/registrar"])
     })
   }
 

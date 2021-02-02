@@ -22,9 +22,9 @@ export class EdicaoPage implements OnInit {
   deadline: any
 
   public userId = 0
-  // is_msg: boolean;
-  // is_message: string;
-  // loading: boolean = false;
+  is_msg: boolean;
+  is_message: string;
+  loading: boolean = false;
 
   constructor(private service: TaskService, private route: ActivatedRoute, private router: Router) { 
     this.route.params.subscribe(params => this.userId = params['id']);
@@ -33,22 +33,22 @@ export class EdicaoPage implements OnInit {
   ngOnInit() {
     this.listarEspecifico()
   }
-  // is_check(){
-  //   this.is_msg = false
-  // }
+  is_check(){
+    this.is_msg = false
+  }
 
   submit_salva(){
-    // this.loading = true
+    this.loading = true
     this.service.editar(this.userId, {"title": this.title, "description":this.description,"done": this.done, "deadline": this.deadline}).subscribe((dados:any) => {
-      // this.is_message = ''
-      // this.is_msg = false
-      // this.loading = false
+      this.is_message = ''
+      this.is_msg = false
+      this.loading = false
       this.router.navigate(["/visualizar", this.userId])
     },
     (error)=>{
-      // this.is_message = 'Erro ao editar a task!'
-      // this.is_msg = true
-      // this.loading = false
+      this.is_message = 'Erro ao editar a task!'
+      this.is_msg = true
+      this.loading = false
     })
   }
 
@@ -56,12 +56,7 @@ export class EdicaoPage implements OnInit {
 
   listarEspecifico(){
     this.service.listarEspecifico(this.userId).subscribe((data:any) => {
-    //   if (data.data.attributes.deadline == null){
-    //     data.data.attributes.deadline == null
-    //  }
-    //  else {
-    //    var odeadline = dateen(data.data.attributes.deadline)
-    //  }
+      
 
      this.t = {
        title: data.data.attributes.title,
@@ -70,8 +65,12 @@ export class EdicaoPage implements OnInit {
        deadline: data.data.attributes.deadline 
      }
 
+      this.is_message = ''
+      this.is_msg = false
+
     }, (error)=>{
-      console.log(error)
+      this.is_message = 'Erro de requisição, aperta f5 ou tenta novamente mais tarde!'
+      this.is_msg = true
     })
   }
 

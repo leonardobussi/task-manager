@@ -1,8 +1,15 @@
 <ion-content>
   <div class="container">
     <div class="header">
-      <a [routerLink]="['/tasks']">volta</a>
+      <a [routerLink]="['/home']">volta</a>
       
+    </div>
+
+    <div *ngIf="is_msg == true" class="container">
+      <div style="display: flex; justify-content: space-between;"  class="alert alert-danger">
+        <span>{{is_message}}</span>
+        <i (click)="is_check()"  style="color: red; font-weight: 600; cursor: pointer;">X</i>
+      </div>
     </div>
 
 
@@ -29,7 +36,7 @@
     
       <div class="form-group mt-5">
         <button class="btn btn-primary w-100" (click)="submit_salva()" type="submit" id="botao">
-          <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> -->
+          <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           Enviar
         </button>
       </div>
