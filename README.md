@@ -4,7 +4,9 @@
 * meu site top
 
 [https://taskks.herokuapp.com/tasks](https://taskks.herokuapp.com/tasks)
-## routes (api versao 1)
+## routes (api versao 1) 
+
+**observação** --> essa documentarção é sobre a versão v1 da api
 
 ### users
 * post(add user) => [http://localhost:3000/api/v1/users/](http://localhost:3000/api/v1/users/)
@@ -68,4 +70,6 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-[https://bussitask.herokuapp.com/](https://bussitask.herokuapp.com/)
+
+
+--> feito por `leonardobussi`
