@@ -13,6 +13,8 @@ import { HttpClientModule } from "@angular/common/http"
 
 import { IonicStorageModule } from '@ionic/storage';
 
+import { AuthGuard } from './guard/auth.guard'
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,6 +26,7 @@ import { IonicStorageModule } from '@ionic/storage';
     IonicStorageModule.forRoot()
   ],
   providers: [
+    AuthGuard,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

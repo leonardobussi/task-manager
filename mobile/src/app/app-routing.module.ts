@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from "./guard/auth.guard"
 
 const routes: Routes = [
   {
@@ -8,24 +9,28 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'tasks',
     pathMatch: 'full'
   },
   {
     path: 'tasks',
-    loadChildren: () => import('./principal/tasks/tasks.module').then( m => m.TasksPageModule)
+    loadChildren: () => import('./principal/tasks/tasks.module').then( m => m.TasksPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'visualizar/:id',
-    loadChildren: () => import('./principal/visualizacao/visualizacao.module').then( m => m.VisualizacaoPageModule)
+    loadChildren: () => import('./principal/visualizacao/visualizacao.module').then( m => m.VisualizacaoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'editar/:id',
-    loadChildren: () => import('./principal/edicao/edicao.module').then( m => m.EdicaoPageModule)
+    loadChildren: () => import('./principal/edicao/edicao.module').then( m => m.EdicaoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'criar',
-    loadChildren: () => import('./principal/criacao/criacao.module').then( m => m.CriacaoPageModule)
+    loadChildren: () => import('./principal/criacao/criacao.module').then( m => m.CriacaoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

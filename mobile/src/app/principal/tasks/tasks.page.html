@@ -6,9 +6,26 @@
     
   </div>
 
+  <div class="contaiAlert">
+    <div *ngIf="is_msg == true" class="container">
+      <div style="display: flex; justify-content: space-between;"  class="alert alert-danger">
+        <span>{{is_message}}</span>
+        <i (click)="is_check()"  style="color: red; font-weight: 600; cursor: pointer;">X</i>
+      </div>
+    </div>
+
+    <div *ngIf="is_msgSuccess == true" class="container">
+      <div style="display: flex; justify-content: space-between;"  class="alert alert-danger">
+        <span>{{is_messageSuccess}}</span>
+        <i (click)="is_check()"  style="color: rgb(62, 226, 149); font-weight: 600; cursor: pointer;">X</i>
+      </div>
+    </div>
+  </div>
+
   <div style="padding: 0 40%; margin: 10px 0;" > 
     <span *ngIf="loading" class="spinner-border spinner-border-sm text-white" style="width: 50px; height: 50px;" role="status" aria-hidden="true"></span>
   </div>
+  
 
   <div class="content">
     <div class="container-fluid">

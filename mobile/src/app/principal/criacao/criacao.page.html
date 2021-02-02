@@ -5,6 +5,17 @@
       
     </div>
 
+
+      <div *ngIf="is_msg == true" class="container">
+        <div style="display: flex; justify-content: space-between;"  class="alert alert-danger">
+          <span>{{is_message}}</span>
+          <i (click)="is_check()"  style="color: red; font-weight: 600; cursor: pointer;">X</i>
+        </div>
+      </div>
+    
+  
+
+
     <h2>Criar task</h2>
 
     <form>

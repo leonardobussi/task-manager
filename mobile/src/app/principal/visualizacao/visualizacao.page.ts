@@ -19,8 +19,8 @@ export class VisualizacaoPage implements OnInit {
 
   }
   public userId: number = 0;
-  // is_message: string;
-  // is_msg: boolean;
+  is_message: string;
+  is_msg: boolean;
   loading: boolean = false;
 
   constructor(private service: TaskService, private route: ActivatedRoute, private router: Router) {
@@ -30,23 +30,13 @@ export class VisualizacaoPage implements OnInit {
   ngOnInit() {
     this.listarEspecifico(this.userId)
   }
-  // is_check(){
-  //   this.is_msg = false
-  // }
+  is_check(){
+    this.is_msg = false
+  }
 
   listarEspecifico(id:number){
     this.loading = true
     this.service.listarEspecifico(id).subscribe((data:any) => {
-
-     
-
-      // if (data.data.attributes.deadline == null){
-      //    data.data.attributes.deadline == null
-      // }
-      // else {
-      //   var odeadline = datebr(data.data.attributes.deadline)
-      // }
-
       this.t = {
         title: data.data.attributes.title,
         description: data.data.attributes.description,
@@ -55,15 +45,14 @@ export class VisualizacaoPage implements OnInit {
         islate: data.data.attributes.islate,
         deadline: data.data.attributes.deadline 
       }
-
-
+      this.is_message = ''
+      this.is_msg = false
       this.loading = false
-
     },
     (error)=>{
-      // this.is_message = 'Erro ao listar, aperte F5 ou tente novamente mais tarde!'
-      // this.is_msg = true
-      // this.loading = false
+      this.is_message = 'Erro ao listar, recarregue a tela novamente!'
+      this.is_msg = true
+      this.loading = false
     })
   }
 
